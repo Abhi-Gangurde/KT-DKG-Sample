@@ -30,7 +30,12 @@ jobs:
 
       - name: Validate bundle before deployment
         run: databricks bundle validate
+        env: 
+          DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST_DEV }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_DEV }}
 
       - name: deploy bundle 
         run: databricks bundle deploy
-      
+        env: 
+          DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST_DEV }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_DEV}}
