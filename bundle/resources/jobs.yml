@@ -2,20 +2,19 @@ resources:
   jobs:
     sample_job:
       name: sample_job_
-      schedule:
-        quartz_cron_expression: 44 23 21 * * ?
-        timezone_id: Canada/Eastern
-        pause_status: PAUSED
+      email_notifications:
+        on_failure: dhiraj.nskd@gmail.com
       tasks:
         - task_key: sample_notebook_job
           notebook_task:
             notebook_path: /Workspace/Users/dhiraj.nskd@gmail.com/Analysis/GeettingSampleData
             source: WORKSPACE
           environment_key: Default
-      queue:
-        enabled: true
       environments:
         - environment_key: Default
           spec:
             environment_version: "5"
-      performance_target: PERFORMANCE_OPTIMIZED
+      # new_cluster:
+      #   spark_version:
+      #   node_type: Standard_D4ds_v5
+      #   num_worker: 1
