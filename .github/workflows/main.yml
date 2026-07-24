@@ -1,0 +1,36 @@
+name: Validate & Deploy to dev  databricks workspace
+
+on:
+  push:
+    paths-ignore:
+      - .github/**
+    branches:
+      - main
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  dev-demo-deploy:
+    runs-on: ubuntu-latest
+    environment: development
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python 
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: install databricks cli
+        uses: databricks/setup-cli@main
+
+      - name: Validate bundle before deployment
+        run: databricks bundle validate
+
+      - name: deploy bundle 
+        run: databricks bundle deploy
+      
