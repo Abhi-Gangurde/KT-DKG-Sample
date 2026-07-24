@@ -1,0 +1,21 @@
+resources:
+  jobs:
+    sample_job:
+      name: sample_job_
+      schedule:
+        quartz_cron_expression: 44 23 21 * * ?
+        timezone_id: Canada/Eastern
+        pause_status: PAUSED
+      tasks:
+        - task_key: sample_notebook_job
+          notebook_task:
+            notebook_path: /Workspace/Users/dhiraj.nskd@gmail.com/Analysis/GeettingSampleData
+            source: WORKSPACE
+          environment_key: Default
+      queue:
+        enabled: true
+      environments:
+        - environment_key: Default
+          spec:
+            environment_version: "5"
+      performance_target: PERFORMANCE_OPTIMIZED
