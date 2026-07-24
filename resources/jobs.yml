@@ -18,8 +18,8 @@ resources:
       #   spark_version:
       #   node_type: Standard_D4ds_v5
       #   num_worker: 1
-      trigger:
-        pause_status: UNPAUSED
-        periodic:
-          interval: 2
-          unit: MINUTES
+      # trigger:
+      #   pause_status: UNPAUSED
+      #   periodic:
+      #     interval: 2
+      #     unit: MINUTES
